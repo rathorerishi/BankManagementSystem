@@ -24,3 +24,5 @@ Learnings:
   - **Login and Signup** buttons are functional with placeholders for further logic.
 
 Thats it for today.See you tomorrow
+
+Sept. 22, 2025:

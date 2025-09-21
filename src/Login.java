@@ -1,4 +1,4 @@
-package bank.management.system;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -64,8 +64,8 @@ public class Login extends JFrame implements ActionListener{
         signup.addActionListener(this);
         add(signup);
 
-        getContentPane().setBackground(Color.white);
-        setSize(900,400);//this is the function wwe use to create frame 
+        getContentPane().setBackground(Color.white);//set the bakcground color of frame to white
+        setSize(800,480);//this is the function wwe use to create frame 
         setVisible(true);//this function is used to make frame visible for users as frame is invisible by default
         setLocation(350,200);//bascially to set the location of frame as by default its showing on top left so to make it visible in middle we set the location
 
