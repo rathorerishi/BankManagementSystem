@@ -3,12 +3,18 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.*;
 
-public class SignupOne extends JFrame{
+public class SignupOne extends JFrame implements ActionListener{
+    Long random;
+    JTextField nameTextField,fnameTextField,dobTextField,emailTextField,addressTextField,cityTextField,stateTextField,pinTextField;
+    JButton next;
+    JRadioButton male,female,married,unmarried,other;
+    JDateChooser dateChooser; 
     SignupOne(){
         setLayout(null);
         Random ran=new Random();//as we want the application form no to be unique as well as random so created random object
-        long random=Math.abs((ran.nextLong()%9000L)+1000L);//and we want random number should be four digit no max to max not more than that
+        random=Math.abs((ran.nextLong()%9000L)+1000L);//and we want random number should be four digit no max to max not more than that
         JLabel formno=new JLabel("APPLICATION FORM NO. "+random);//here appended the random no in jlabel
         formno.setFont(new Font("Raleway",Font.BOLD,30));
         formno.setBounds(140,20,600,40);
@@ -24,7 +30,7 @@ public class SignupOne extends JFrame{
         name.setBounds(100,140,100,30);
         add(name); 
 
-        JTextField nameTextField=new JTextField();
+        nameTextField=new JTextField();
         nameTextField.setFont(new Font("Raleway",Font.BOLD,14));
         nameTextField.setBounds(300,140,400,30);
         add(nameTextField);
@@ -34,7 +40,7 @@ public class SignupOne extends JFrame{
         fname.setBounds(100,190,200,30);
         add(fname); 
 
-        JTextField fnameTextField=new JTextField();
+        fnameTextField=new JTextField();
         fnameTextField.setFont(new Font("Raleway",Font.BOLD,14));
         fnameTextField.setBounds(300,190,400,30);
         add(fnameTextField);
@@ -44,8 +50,9 @@ public class SignupOne extends JFrame{
         dob.setBounds(100,240,200,30);
         add(dob);
 
-        JDateChooser dateChooser=new JDateChooser();
-        dateChooser.setBounds(300,240,200,30); 
+        dateChooser=new JDateChooser();
+        dateChooser.setBounds(300,240,400,30);
+        dateChooser.setForeground(new Color(105,105,105)); 
         add(dateChooser);
         
         JLabel gender=new JLabel("Gender:");
@@ -53,12 +60,26 @@ public class SignupOne extends JFrame{
         gender.setBounds(100,290,200,30);
         add(gender); 
 
+        male=new JRadioButton("Male");
+        male.setBounds(300,290,60,30);
+        male.setBackground(Color.WHITE);
+        add(male);
+
+        female=new JRadioButton("Female");
+        female.setBounds(450,290,120,30);
+        female.setBackground(Color.WHITE);
+        add(female);
+
+        ButtonGroup gendergroup=new ButtonGroup();// basically iske bina male and female button dono at a time select ho rhe the so we need ki at a time ek hi select ho that where buttongroup helps.
+        gendergroup.add(male);
+        gendergroup.add(female);
+
         JLabel email=new JLabel("Email:");
         email.setFont(new Font("Raleway",Font.BOLD,20));
         email.setBounds(100,340,200,30);
         add(email);
         
-        JTextField emailTextField=new JTextField();
+        emailTextField=new JTextField();
         emailTextField.setFont(new Font("Raleway",Font.BOLD,14));
         emailTextField.setBounds(300,340,400,30);
         add(emailTextField);
@@ -66,14 +87,35 @@ public class SignupOne extends JFrame{
         JLabel marital=new JLabel("Marital Status:");
         marital.setFont(new Font("Raleway",Font.BOLD,20));
         marital.setBounds(100,390,200,30);
-        add(marital); 
+        add(marital);
+        
+        married=new JRadioButton("Married");
+        married.setBounds(300,390,100,30);
+        married.setBackground(Color.WHITE);
+        add(married);
+
+        unmarried=new JRadioButton("Unmarried");
+        unmarried.setBounds(450,390,100,30);
+        unmarried.setBackground(Color.WHITE);
+        add(unmarried);
+
+        other=new JRadioButton("Other");
+        other.setBounds(630,390,100,30);
+        other.setBackground(Color.WHITE);
+        add(other);
+
+
+        ButtonGroup maritalgroup=new ButtonGroup();// basically iske bina male and female button dono at a time select ho rhe the so we need ki at a time ek hi select ho that where buttongroup helps.
+        maritalgroup.add(male);
+        maritalgroup.add(female);
+        maritalgroup.add(other);
 
         JLabel address=new JLabel("Address:");
         address.setFont(new Font("Raleway",Font.BOLD,20));
         address.setBounds(100,440,200,30);
         add(address); 
 
-        JTextField addressTextField=new JTextField();
+        addressTextField=new JTextField();
         addressTextField.setFont(new Font("Raleway",Font.BOLD,14));
         addressTextField.setBounds(300,440,400,30);
         add(addressTextField);
@@ -83,7 +125,7 @@ public class SignupOne extends JFrame{
         city.setBounds(100,490,200,30);
         add(city);
 
-        JTextField cityTextField=new JTextField();
+        cityTextField=new JTextField();
         cityTextField.setFont(new Font("Raleway",Font.BOLD,14));
         cityTextField.setBounds(300,490,400,30);
         add(cityTextField);
@@ -93,7 +135,7 @@ public class SignupOne extends JFrame{
         state.setBounds(100,540,200,30);
         add(state);
         
-        JTextField stateTextField=new JTextField();
+        stateTextField=new JTextField();
         stateTextField.setFont(new Font("Raleway",Font.BOLD,14));
         stateTextField.setBounds(300,540,400,30);
         add(stateTextField);
@@ -103,10 +145,18 @@ public class SignupOne extends JFrame{
         pincode.setBounds(100,590,200,30);
         add(pincode);
         
-        JTextField pinTextField=new JTextField();
+        pinTextField=new JTextField();
         pinTextField.setFont(new Font("Raleway",Font.BOLD,14));
         pinTextField.setBounds(300,590,400,30);
         add(pinTextField);
+
+        next=new JButton("Next");
+        next.setBackground(Color.BLACK);
+        next.setForeground(Color.WHITE);
+        next.setFont(new Font("Raleway",Font.BOLD,14));
+        next.setBounds(620,660,80,30);
+        next.addActionListener(this);
+        add(next);
         
         getContentPane().setBackground(Color.WHITE);
         setSize(850,800);
@@ -115,8 +165,53 @@ public class SignupOne extends JFrame{
 
 
     }
+    public void actionPerformed(ActionEvent ae){
+        String formno=""+random;//we need to convert long (random) into string as database me values enter krunga to sirf string values hi enter krunga
+        String name=nameTextField.getText();//get text method se hm textfield se text nikal skte h and setText se text daal skte h textfield me
+        String fname=fnameTextField.getText();
+        String dob=((JTextField)dateChooser.getDateEditor().getUiComponent()).getText();
+        String gender=null;
+        if(male.isSelected()){
+            gender="Male";
+        }
+        else if(female.isSelected()){
+            gender="female";
+        }
+        String email=emailTextField.getText();
+        String marital=null;
+        if(married.isSelected()){
+            marital="Married";
+        }
+        else if(unmarried.isSelected()){
+            marital="Unmarried";
+        }
+         else if(other.isSelected()){
+            marital="Other";
+        }
+        String address=addressTextField.getText();
+        String city=cityTextField.getText();
+        String state=stateTextField.getText();
+        String pin=pinTextField.getText();
+        try{
+            if(name.equals("")){
+                JOptionPane.showMessageDialog(null,"Name is Required");
+
+            }
+            else{
+                Conn c=new Conn();
+                String query="insert into signup values('"+formno+"','"+name+"','"+fname+"','"+dob+"','"+gender+"','"+email+"','"+marital+"','"+address+"','"+city+"','"+pin+"','"+state+"')";//"'String'"+variable+"'String"
+                c.s.executeUpdate(query);
+            }
+
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+    }  
     public static void main(String[] args){
         new SignupOne();
+
     }
     
 }
