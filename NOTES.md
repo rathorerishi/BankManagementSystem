@@ -49,4 +49,11 @@ and now to execute this we have action listener in signupone.java file where we 
 Inside database first will create a table say signup and write all the columns like formno,dob etc and once we run the SignupOne.java file and fill all the texxtfield and choose among radio button and then click on next and after that inside just write Select * from signup and run query you will see the row of formno,name,do etc whatever user filled during signup and hence we got it in our database and ya our db is connected.
 So thats what I did today!
 
+September 24,2025:
+Started working on signup2 page for getting additional info of users.
+Yes I have used JComboBox which shows a popup menu that shows a list of items.
+Apart from that as I have to insert the form no, and the value of form no I have to take from the signup one page and use in signup two page so for that I have to pass the String form no in the signup tow object where we are calling signup two and pass in signuptwo constructor.
+So ya after that created signuptwo table inside db and connect it and ya I got the rows whatever info I am filling in additional details of signuptwo page.
+Ya thats what I did today!
+
 
