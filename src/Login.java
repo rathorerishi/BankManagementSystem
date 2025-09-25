@@ -4,12 +4,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+import java.sql.*;
+
 
 public class Login extends JFrame implements ActionListener{
     JButton login,signup,clear;//to access globally thats why we defined it outside constructor
     JTextField cardTextField;
     JPasswordField pinTextField;
+    
     Login(){//constructor bnaya h
+
         setLayout(null);//this will set to custom layout not border layout
         setTitle("Automated Teller Machine");//set title of the frame
         ImageIcon i1=new ImageIcon(ClassLoader.getSystemResource("icons/logo.jpg"));
@@ -74,6 +78,28 @@ public class Login extends JFrame implements ActionListener{
         if(ae.getSource()==clear){
             cardTextField.setText("");
             pinTextField.setText("");
+
+        }
+        else if(ae.getSource()==login){
+            Conn conn=new Conn();
+            String cardnumber=cardTextField.getText();
+            String pinnumber=pinTextField.getText();
+            String query="Select * from login where cardnumber = '"+cardnumber+"' and pinnumber= '"+pinnumber+"'";
+             
+            try{
+                ResultSet rs=conn.s.executeQuery(query);
+                if(rs.next()){
+                    setVisible(false);
+                    new Transactions(pinnumber).setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Incorrect Cardnumber or Pin");
+                }
+
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
 
         }
         
