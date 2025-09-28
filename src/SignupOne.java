@@ -106,8 +106,8 @@ public class SignupOne extends JFrame implements ActionListener{
 
 
         ButtonGroup maritalgroup=new ButtonGroup();// basically iske bina male and female button dono at a time select ho rhe the so we need ki at a time ek hi select ho that where buttongroup helps.
-        maritalgroup.add(male);
-        maritalgroup.add(female);
+        maritalgroup.add(married);
+        maritalgroup.add(unmarried);
         maritalgroup.add(other);
 
         JLabel address=new JLabel("Address:");
