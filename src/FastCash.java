@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class Transactions extends JFrame implements ActionListener{
+public class FastCash extends JFrame implements ActionListener{
     JButton deposit, withdrawl, fastcash, ministatement, pinchange, balanceenquiry, exit;
     String pinnumber;
-    Transactions(String pinnumber){
-        this.pinnumber=pinnumber;
+    FastCash(String pinnumber){
+      this.pinnumber=pinnumber;
       setLayout(null);
 
 
@@ -83,7 +83,7 @@ public class Transactions extends JFrame implements ActionListener{
 
 
     public static void main(String[] args){
-        new Transactions("");
+        new FastCash("");
     }
 
     

@@ -199,9 +199,12 @@ public class SignupThree extends  JFrame implements ActionListener{
                     Conn conn=new Conn();
                     String query1="insert into signupthree values('"+formno+"','"+accountType+"','"+cardnumber+"','"+pinnumber+"','"+facility+"')";
                     String query2="insert into login values('"+formno+"','"+cardnumber+"','"+pinnumber+"')";
-                    JOptionPane.showMessageDialog(null,"Card Number "+cardnumber+"\n Pin: "+pinnumber);
                     conn.s.executeUpdate(query1);                    
-                    conn.s.executeUpdate(query2);                    
+                    conn.s.executeUpdate(query2); 
+                    JOptionPane.showMessageDialog(null,"Card Number "+cardnumber+"\n Pin: "+pinnumber);
+                    setVisible(false);
+                    new Deposit(pinnumber).setVisible(true);  
+
                 }
 
 
@@ -211,6 +214,8 @@ public class SignupThree extends  JFrame implements ActionListener{
             }
         }
         else if(ae.getSource()==cancel){
+            setVisible(false);
+            new Login().setVisible(true);
 
         }
 
