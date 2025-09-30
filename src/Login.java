@@ -70,9 +70,9 @@ public class Login extends JFrame implements ActionListener{
 
         getContentPane().setBackground(Color.white);//set the bakcground color of frame to white
         setSize(800,480);//this is the function wwe use to create frame 
-        setVisible(true);//this function is used to make frame visible for users as frame is invisible by default
         setLocation(350,200);//bascially to set the location of frame as by default its showing on top left so to make it visible in middle we set the location
-
+        setVisible(true);//this function is used to make frame visible for users as frame is invisible by default
+       
     }
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()==clear){
